@@ -1,8 +1,8 @@
 "use client"
-import { CarCardProps } from '@/types/index';
+import { CarCardProps } from '@src/types';
 import { Fragment } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { generateCarImageUrl } from '@/utils/index';
+import { generateCarImageUrl } from '@src/utils';
 import Image from 'next/image';
 
 interface CarDetailsProps {

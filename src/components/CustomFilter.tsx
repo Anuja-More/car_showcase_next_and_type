@@ -3,8 +3,8 @@ import { Fragment, useState } from "react"
 import Image from "next/image"
 import {useRouter} from "next/navigation"
 import {Listbox, Transition  } from "@headlessui/react"
-import { customfilterProps } from "@/types/index";
-import { updateSearchParams } from "@/utils/index";
+import { customfilterProps } from "@src/types"
+import { updateSearchParams } from "@src/utils"
 
 const CustomFilter = ({title, options}: customfilterProps) => {
  const[selected, setSelected] = useState(options[0])
