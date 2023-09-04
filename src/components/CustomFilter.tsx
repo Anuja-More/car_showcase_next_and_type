@@ -1,8 +1,8 @@
 "use client"
 import { Fragment, useState } from "react"
-import Image from "next/Image";
+import Image from "next/image"
 import {useRouter} from "next/navigation"
-import {Listbox, Transition  } from '@headlessui/react'
+import {Listbox, Transition  } from "@headlessui/react"
 import { customfilterProps } from "@/types/index";
 import { updateSearchParams } from "@/utils/index";
 
