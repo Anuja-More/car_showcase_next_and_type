@@ -3,7 +3,7 @@ import { CarCardProps, filterProps } from "@/types/index";
 export async function FetchCars(filters: filterProps ) {
   const {manufacturer, year, fuel, limit, model} = filters
 const headers = {
-    'X-RapidAPI-Key': '458a9e9b88mshf9f7acf27e4bab0p127c39jsna2917dfcb283',
+    'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY || "",
     'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
 }
 const response = await fetch(
