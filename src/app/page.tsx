@@ -13,8 +13,8 @@ export interface HomeProps {
 export default async function Home({ searchParams }: HomeProps){
   const allCars = await FetchCars({
     manufacturer: searchParams.manufacturer || "",
-    year: searchParams.year || 2022,
-    fuel: searchParams.fuel || "",
+    year: searchParams.Year || 2022,
+    fuel: searchParams.Fuel || "",
     limit: searchParams.limit || 10,
     model: searchParams.model || "",
   });

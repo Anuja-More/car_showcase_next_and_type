@@ -29,10 +29,10 @@ export interface CarCardProps {
 }
 export interface FilterProps {
   manufacturer?: string;
-  year?: number;
+  Year?: number;
   model?: string;
   limit?: number;
-  fuel?: string;
+  Fuel?: string;
 }
 export interface OptionProps {
   title: string;
