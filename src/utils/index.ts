@@ -18,7 +18,22 @@ const result = await response.json();
 
 return result;
 }
+export async function FetchCarDetails(filters: FilterProps ) {
+  const {manufacturer, model, year} = filters
+const headers = {
+    'X-RapidAPI-Key': process.env.NEXT_PUBLIC_RAPID_API_KEY || "",
+    'X-RapidAPI-Host': 'cars-by-api-ninjas.p.rapidapi.com'
+}
+const response = await fetch(
+  `https://cars-by-api-ninjas.p.rapidapi.com/v1/cars?make=${manufacturer}&model=${model}&year=${year}`,
+  {
+    headers: headers,
+  }
+);
+const result = await response.json();
 
+return result;
+}
 export const calculateCarRent = (city_mpg: number, year: number) => {
     const basePricePerDay = 50; // Base rental price per day in dollars
     const mileageFactor = 0.1; // Additional rate per mile driven

@@ -1,5 +1,6 @@
 "use client"
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { CarCardProps } from '@src/types'; 
 interface carProps {
@@ -21,8 +22,13 @@ const CarCard = ({car}: carProps) => {
     model,
     transmission,
     year} = car
+    const router = useRouter();
     const carRent = calculateCarRent(city_mpg, year);
-    const [isOpen, setIsOpen] = useState(false);
+    // const [isOpen, setIsOpen] = useState(false);
+
+    const navigateToCarDetails = () =>{
+      router.push(`\CarDetails?make=${make}&model=${model}&year=${year}&combination_mpg=${combination_mpg}`)
+    }
   return (
     <div className='car-card group'>
         <div className='car-card__content'>
@@ -66,11 +72,11 @@ const CarCard = ({car}: carProps) => {
             title='View More'
             containerStyles='w-full py-[16px] rounded-full bg-primary-blue'
             textStyles='text-white text-[14px] leading-[17px] font-bold'
-            handleClick={() => setIsOpen(true)}
+            handleClick={navigateToCarDetails}
           />
         </div>
         </div>
-        <CarDetails isOpen={isOpen} closeModal={()=> setIsOpen(false)} car={car} />
+        {/* <CarDetails isOpen={isOpen} closeModal={()=> setIsOpen(false)} car={car} /> */}
     </div>
   )
 }

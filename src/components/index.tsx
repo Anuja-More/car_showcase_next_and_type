@@ -7,9 +7,11 @@ import CustomFilter from "./CustomFilter";
 import SearchBar from "./SearchBar";
 import CarDetails from "./CarDetails";
 import SearchManufacturer from "./SearchManufacturer";
+import LoaderComp from "./Loader";
 import ShowMore from "./ShowMore";
 export {
     Hero,
+    LoaderComp,
     CustomButton,
     Footer,
     Navbar,

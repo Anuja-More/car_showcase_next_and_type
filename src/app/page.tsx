@@ -1,4 +1,4 @@
-import {CarCard} from '@src/components';
+import {CarCard, CarDetails} from '@src/components';
 import {CustomFilter} from '@src/components';
 import {Hero} from '@src/components';
 import {SearchBar} from '@src/components'
@@ -6,6 +6,7 @@ import { ShowMore } from '@src/components'
 import { fuels, yearsOfProduction } from '@src/constants'
 import { FilterProps } from '@src/types'
 import { FetchCars } from '@src/utils'
+import CarDetailsPage from './CarDetails/page';
 export interface HomeProps {
   searchParams: FilterProps;
 }
