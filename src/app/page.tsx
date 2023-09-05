@@ -6,7 +6,7 @@ import { ShowMore } from '@src/components'
 import { fuels, yearsOfProduction } from '@src/constants'
 import { FilterProps } from '@src/types'
 import { FetchCars } from '@src/utils'
-import CarDetailsPage from './CarDetails/page';
+// import CarDetailsPage from './CarDetails/page';
 export interface HomeProps {
   searchParams: FilterProps;
 }

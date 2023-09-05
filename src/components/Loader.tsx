@@ -8,8 +8,8 @@ const LoaderComp = () => {
         borderLeft: '4px solid transparent',
         borderRadius: '50%',
         width: '50px',
-    height: '50px',
-    animation: 'spin 2s linear infinite',
+        height: '50px',
+        animation: 'spin 2s linear infinite',
       };
   return (
     <div className="flex justify-center items-center h-screen">
