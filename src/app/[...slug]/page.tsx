@@ -43,10 +43,9 @@ const Detailspage = ({ params }: { params: { slug: string[] } }) => {
     }, [params.slug[0], params.slug[1], modelYear, router]);
 
     const handleGoBack = () => {
-        router.back();
+        router.push("/");
     };
 
-    console.log(params, modelYear, combination_mpg);
     return (
         <div className='m-4'>
             {isLoading ? ( // Conditional rendering based on isLoading state
