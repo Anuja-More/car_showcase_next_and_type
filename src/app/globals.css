@@ -11,6 +11,12 @@
   font-family: "Manrope", sans-serif;
 }
 
+form > div {
+  @apply flex flex-col gap-2;
+}
+.inputclass {
+  @apply shadow-md px-6 py-2 border-slate-300
+}
 /* START: General styles */
 .max-width {
   @apply max-w-[1440px] mx-auto;

@@ -45,6 +45,9 @@ const Detailspage = ({ params }: { params: { slug: string[] } }) => {
     const handleGoBack = () => {
         router.push("/");
     };
+    const handleContactNav = () => {
+        router.push("/contact_us");
+    };
 
     return (
         <div className='m-4'>
@@ -96,7 +99,7 @@ const Detailspage = ({ params }: { params: { slug: string[] } }) => {
                     textStyles='text-white text-[14px] leading-[17px] font-bold' handleClick={handleGoBack} />
                 <CustomButton title='Contact now for booking'
                     containerStyles='m-4 py-[16px] rounded-full bg-primary-blue'
-                    textStyles='text-white text-[14px] leading-[17px] font-bold' handleClick={handleGoBack} />
+                    textStyles='text-white text-[14px] leading-[17px] font-bold' handleClick={handleContactNav} />
             </div>
         </div>
     )

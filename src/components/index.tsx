@@ -9,6 +9,7 @@ import CarDetails from "./CarDetails";
 import SearchManufacturer from "./SearchManufacturer";
 import LoaderComp from "./Loader";
 import ShowMore from "./ShowMore";
+import ContactForm from "./ContactForm";
 export {
     Hero,
     LoaderComp,
