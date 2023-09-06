@@ -8,7 +8,6 @@ interface carProps {
 }
 import CustomButton from './CustomButton';
 import { calculateCarRent,  generateCarImageUrl } from '@src/utils';
-import CarDetails from './CarDetails';
 const CarCard = ({car}: carProps) => {
 
     const {city_mpg,
@@ -27,7 +26,7 @@ const CarCard = ({car}: carProps) => {
     // const [isOpen, setIsOpen] = useState(false);
 
     const navigateToCarDetails = () =>{
-      router.push(`\CarDetails?make=${make}&model=${model}&year=${year}&combination_mpg=${combination_mpg}`)
+      router.push(`/${make}/${model}?year=${year}&combination_mpg=${combination_mpg}`)
     }
   return (
     <div className='car-card group'>
@@ -76,7 +75,6 @@ const CarCard = ({car}: carProps) => {
           />
         </div>
         </div>
-        {/* <CarDetails isOpen={isOpen} closeModal={()=> setIsOpen(false)} car={car} /> */}
     </div>
   )
 }
