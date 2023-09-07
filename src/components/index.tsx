@@ -10,8 +10,10 @@ import SearchManufacturer from "./SearchManufacturer";
 import LoaderComp from "./Loader";
 import ShowMore from "./ShowMore";
 import ContactForm from "./ContactForm";
+import Card from "./card";
 export {
     Hero,
+    Card,
     LoaderComp,
     CustomButton,
     Footer,

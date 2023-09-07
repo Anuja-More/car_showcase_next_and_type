@@ -10,7 +10,18 @@ import { FetchCars } from '@src/utils'
 export interface HomeProps {
   searchParams: FilterProps;
 }
+const getCars = async () =>{
+  try{
+    const res = await fetch("http://localhost:3000/api/cardata",{cache: "no-store"});
+    if(!res.ok){
+      throw new Error("failed to fetch new car data");
+    }
+    return res.json();
+  }catch(error){
+    console.log("error loading cars:",error)
+  }
 
+}
 export default async function Home({ searchParams }: HomeProps){
   const allCars = await FetchCars({
     manufacturer: searchParams.manufacturer || "",
