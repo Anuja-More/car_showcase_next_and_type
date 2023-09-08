@@ -2,9 +2,15 @@ import React from 'react';
 import { Card } from '@src/components';
 import Link from 'next/link';
 
+let apiUrl: string;
+if (process.env.NODE_ENV === "production") {
+  apiUrl = "https://car-showcase-next-and-type-1u4i-anuja-more.vercel.app/api/cardata";
+} else {
+  apiUrl = "http://localhost:3000/api/cardata";
+}
 const getCars = async () => {
   try {
-    const res = await fetch("http://localhost:3000/api/cardata", { cache: "no-store" });
+    const res = await fetch(apiUrl, { cache: "no-store" });
     if (!res.ok) {
       throw new Error("Failed to fetch car data");
     }
