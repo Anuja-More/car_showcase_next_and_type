@@ -6,7 +6,13 @@ const RemoveCars = ({id}) => {
     const removeCarDetails = async () =>{
         const confirmed = confirm("Are you sure you want to delete car details?");
         if(confirmed && id){
-         const res =  await fetch(`http://localhost:3000/api?id=${id}`,{
+            let apiUrl: string;
+            if (process.env.NODE_ENV === "production") {
+                apiUrl = `https://car-showcase-next-and-type-1u4i-anuja-more.vercel.app/api/cardata?id=${id}`;
+            } else {
+                apiUrl = `http://localhost:3000/api/cardata?id=${id}`;
+            }
+         const res =  await fetch(apiUrl,{
             method: "DELETE"
             });
             console.log(res)

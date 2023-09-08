@@ -73,8 +73,14 @@ const CarForm = ({toggleFormVisibility, carDetail }) => {
     e.preventDefault();
     
     const method = carDetail ? 'PUT' : 'POST';
-    console.log(method);
-    let apiUrl = 'http://localhost:3000/api/cardata';
+   
+    let apiUrlCheck: string;
+    if (process.env.NODE_ENV === "production") {
+        apiUrlCheck = `https://car-showcase-next-and-type-1u4i-anuja-more.vercel.app/api/cardata`;
+    } else {
+        apiUrlCheck = `http://localhost:3000/api/cardata`;
+    }
+    let apiUrl = apiUrlCheck;
   
     if (carDetail && carDetail._id) {
       apiUrl = `${apiUrl}/${carDetail._id}`;

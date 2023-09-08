@@ -1,25 +1,32 @@
 import React from 'react'
 import CarForm from '@src/components/CarForm';
-const getCarsById = async(id) =>{
-    try{
-        const res = await fetch(`http://localhost:3000/api/cardata/${id}`,{cache: "no-store"});
-        if(!res.ok){
+
+const getCarsById = async (id) => {
+    let apiUrl: string;
+    if (process.env.NODE_ENV === "production") {
+        apiUrl = `https://car-showcase-next-and-type-1u4i-anuja-more.vercel.app/api/cardata/${id}`;
+    } else {
+        apiUrl = `http://localhost:3000/api/cardata/${id}`;
+    }
+    try {
+        const res = await fetch(apiUrl, { cache: "no-store" });
+        if (!res.ok) {
             throw new Error('Failed to fetch topic')
         }
         return res.json();
     }
-    catch(error){
+    catch (error) {
         console.log(error)
     }
 }
-const Editpage = async({params}) => {
-    const {id} = params
-    const { carData } =  await getCarsById(id);
-  return (
-    <div>Edit Car data
-        <CarForm carDetail={carData} />
-    </div>
-  )
+const Editpage = async ({ params }) => {
+    const { id } = params
+    const { carData } = await getCarsById(id);
+    return (
+        <div>Edit Car data
+            <CarForm carDetail={carData} />
+        </div>
+    )
 }
 
 export default Editpage;

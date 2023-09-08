@@ -31,7 +31,13 @@ const ContactForm = () => {
         e.preventDefault();
         setIsSubmitting(true);
 
-        const res = await fetch('http://localhost:3000/api/contact', {
+        let apiUrlCheck: string;
+        if (process.env.NODE_ENV === "production") {
+            apiUrlCheck = `https://car-showcase-next-and-type-1u4i-anuja-more.vercel.app/api/contact`;
+        } else {
+            apiUrlCheck = `http://localhost:3000/api/contact`;
+        }
+        const res = await fetch(apiUrlCheck, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
