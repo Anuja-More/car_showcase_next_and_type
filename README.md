@@ -11,7 +11,7 @@ A dynamic Car Showcase web app built with Next.js 13.4, Tailwind CSS, Headless U
 - Pagination and advanced search filters.
 - Dynamic routing for detailed car pages.
 - Contact page with MongoDB message storage.
-- Preowned Cars section for listing preowned cars for resale and removing listings, with data stored in MongoDB.
+- Preowned Cars section for listing preowned cars for resale , update car information and removing listings, with data stored in MongoDB.
 - Responsive design with Tailwind CSS.
 
 ## Technologies
