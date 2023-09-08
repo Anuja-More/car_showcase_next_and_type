@@ -99,3 +99,38 @@ export const manufacturers = [
       ],
     },
   ];
+
+export const FUEL_OPTIONS = [
+  { value: 'Petrol', label: 'Petrol' },
+  { value: 'Diesel', label: 'Diesel' },
+  { value: 'LPG', label: 'LPG' },
+  { value: 'CNG & Hybrids', label: 'CNG & Hybrids' },
+  { value: 'Electric', label: 'Electric' },
+];
+
+export const YEAR_OPTIONS = [
+  { value: 'Under 3 Years', label: 'Under 3 Years' },
+  { value: 'Under 5 Years', label: 'Under 5 Years' },
+  { value: 'Under 7 Years', label: 'Under 7 Years' },
+  { value: '7 Years and Above', label: '7 Years and Above' },
+];
+
+export const OWNERS_OPTIONS = [
+  { value: 'First', label: 'First' },
+  { value: 'Second', label: 'Second' },
+  { value: 'Third', label: 'Third' },
+  { value: 'Fourth', label: 'Fourth' },
+  { value: 'More than Four', label: 'More than Four' },
+];
+
+export const TRANSMISSION_OPTIONS = [
+  { value: 'Automatic', label: 'Automatic' },
+  { value: 'Manual', label: 'Manual' },
+  { value: 'Ev', label: 'Ev' },
+];
+export const KM_DRIVEN_OPTIONS = [
+  { value: 'Less than 10,000', label: 'Less than 10,000' },
+  { value: '10,000 - 20,000', label: '10,000 - 20,000' },
+  { value: '20,000 - 30,000', label: '20,000 - 30,000' },
+  { value: '30,000 - 40,000', label: '30,000 - 40,000' },
+];

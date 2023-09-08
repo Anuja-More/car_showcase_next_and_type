@@ -5,8 +5,10 @@ import { NextResponse } from "next/server";
 export async function POST(req) {
     const {
       city_mpg,
+      km_driven,
       combination_mpg,
       cylinders,
+      no_of_owners,
       displacement,
       drive,
       fuel_type,
@@ -27,8 +29,10 @@ export async function POST(req) {
         city_mpg,
         combination_mpg,
         cylinders,
+        km_driven,
         displacement,
         drive,
+        no_of_owners,
         fuel_type,
         highway_mpg,
         make,

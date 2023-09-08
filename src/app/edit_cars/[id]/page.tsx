@@ -23,7 +23,8 @@ const Editpage = async ({ params }) => {
     const { id } = params
     const { carData } = await getCarsById(id);
     return (
-        <div>Edit Car data
+        <div>
+        <h1 className="text-3xl font-semibold mb-4 text-center">Edit PreOwned Cars</h1>
             <CarForm carDetail={carData} />
         </div>
     )

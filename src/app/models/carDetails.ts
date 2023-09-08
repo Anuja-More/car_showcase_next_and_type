@@ -6,6 +6,14 @@ const CarDetailSchema = new Schema(
       type: Number,
       required: true,
     },
+    km_driven:{
+        type: String,
+        required: true,
+      },
+    no_of_owners:{
+        type: String,
+        required: true,
+      },
     combination_mpg: {
       type: Number,
       required: true,
@@ -43,7 +51,7 @@ const CarDetailSchema = new Schema(
       required: true,
     },
     year: {
-      type: Number,
+      type: String,
       required: true,
     },
     top_view_image: {

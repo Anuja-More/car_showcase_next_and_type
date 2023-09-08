@@ -28,7 +28,7 @@ const AddedCars = async () => {
     <div className="container mx-auto py-5 px-10">
       <h1 className="text-3xl font-semibold mb-4 text-center">PreOwned Cars</h1>
       <Link href="/add_cars" className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-400 mb-4 inline-block">
-          Add Cars
+          Sell a Car
       </Link>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {carData && carData.length > 0 ? (
