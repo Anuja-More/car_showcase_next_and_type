@@ -1,6 +1,7 @@
 "use client";
 import React from 'react';
 import Link from 'next/link';
+import RemoveCars from './RemoveCars';
 
 const Card = ({ carData }) => {
   return (
@@ -18,6 +19,7 @@ const Card = ({ carData }) => {
       <Link href={`/edit_cars/${carData._id}`} className="text-blue-500 hover:underline">
         Edit
       </Link>
+      <RemoveCars id={carData._id}/>
     </div>
   );
 }

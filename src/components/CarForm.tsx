@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from 'react';
-// import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const CarForm = ({toggleFormVisibility, carDetail }) => {
@@ -51,11 +51,16 @@ const CarForm = ({toggleFormVisibility, carDetail }) => {
     const { name, value, type, files } = e.target;
     if (type === 'file') {
         const file = files[0];
-        const fileUrl = URL.createObjectURL(file);
-      setFormData({
-        ...formData,
-        [name]: fileUrl,
-      });
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            if (event.target) {
+            setFormData({
+              ...formData,
+              [name]: event.target.result,
+            });
+        }
+          };
+          reader.readAsDataURL(file);
     } else {
       setFormData({
         ...formData,
@@ -86,8 +91,7 @@ const CarForm = ({toggleFormVisibility, carDetail }) => {
     // setErrors(msg);
     setSuccess(success);
   
-    if (success) {
-      
+    if (success) {     
       setFormData({
         city_mpg: '',
         combination_mpg: '',

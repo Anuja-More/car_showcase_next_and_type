@@ -64,9 +64,17 @@ export async function POST(req) {
     const carData = await CarDetail.find();
     return NextResponse.json({carData})
   }
-  export async function DELETE(req){
-   const id = req.nextUrl.searchParams.get("id");
-   await connectDB();
-   await CarDetail.findByIdAndDelete(id);
-   return NextResponse.json({message: "car details deleted"},{ status: 200});
+  export async function DELETE(req) {
+    const id = req.nextUrl.searchParams.get("id");
+    await connectDB();
+    try {
+      const deletedCarDetail = await CarDetail.findByIdAndDelete(id);
+      if (!deletedCarDetail) {
+        return NextResponse.json({ message: "Car detail not found" }, { status: 404 });
+      }
+      return NextResponse.json({ message: "Car detail deleted" }, { status: 200 });
+    } catch (error) {
+      console.error("Error deleting car detail:", error);
+      return NextResponse.json({ message: "Unable to delete car detail" }, { status: 500 });
+    }
   }

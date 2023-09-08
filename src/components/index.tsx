@@ -11,9 +11,12 @@ import LoaderComp from "./Loader";
 import ShowMore from "./ShowMore";
 import ContactForm from "./ContactForm";
 import Card from "./card";
+import RemoveCars from "./RemoveCars";
 export {
     Hero,
     Card,
+    RemoveCars,
+    ContactForm,
     LoaderComp,
     CustomButton,
     Footer,
