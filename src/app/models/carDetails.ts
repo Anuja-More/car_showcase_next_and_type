@@ -2,6 +2,11 @@ import mongoose, { Schema } from "mongoose";
 
 const CarDetailSchema = new Schema(
   {
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "Owner",
+        required: true,
+      },
     city_mpg: {
       type: Number,
       required: true,

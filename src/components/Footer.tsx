@@ -9,7 +9,7 @@ const Footer = () => (
         <Image src='/logo.svg' alt='logo' width={118} height={18} className='object-contain' />
         <p className='text-base text-gray-700'>
           Carhub 2023 <br />
-          All Rights Reserved &copy;
+          All Rights Reserved 2023 Anuja Ajit More &copy;
         </p>
       </div>
 

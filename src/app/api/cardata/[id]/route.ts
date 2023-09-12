@@ -1,6 +1,7 @@
 import connectDB from "@src/app/lib/mongodb";
 import CarDetail from "@src/app/models/carDetails";
 import mongoose from "mongoose";
+import Owner from "@src/app/models/owner";
 import { NextResponse } from "next/server";
 export async function PUT(req, {params}) {
     const {id } = params
@@ -9,7 +10,7 @@ export async function PUT(req, {params}) {
     try {
       await connectDB();
       const existingCarDetail = await CarDetail.findById(id);
-  
+      console.log(existingCarDetail);
       if (!existingCarDetail) {
         return NextResponse.json({ msg: ["Car detail not found."], success: false });
       }
@@ -35,9 +36,20 @@ export async function PUT(req, {params}) {
       }
     }
   }
-  export async function GET(req, {params}){
-    const {id} = params;
-    await connectDB();
-    const carData = await CarDetail.findOne({_id: id});
-    return NextResponse.json({carData},{status:200});
+  export async function GET(req, { params }) {
+    const { id } = params;
+  
+    try {
+      await connectDB();
+      const carData = await CarDetail.findOne({ _id: id }).populate("owner");
+      
+      if (!carData) {
+        return NextResponse.json({ message: "Car detail not found" }, { status: 404 });
+      }
+      return NextResponse.json({ carData }, { status: 200 });
+    } catch (error) {
+      console.error("Error fetching car detail:", error);
+      return NextResponse.json({ message: "Unable to fetch car detail" }, { status: 500 });
+    }
   }
+  

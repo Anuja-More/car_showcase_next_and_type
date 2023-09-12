@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { FUEL_OPTIONS, TRANSMISSION_OPTIONS, OWNERS_OPTIONS, YEAR_OPTIONS, KM_DRIVEN_OPTIONS } from '@src/constants';
 
 const CarForm = ({ toggleFormVisibility, carDetail }) => {
+    console.log(carDetail)
     const router = useRouter()
     // const [errors, setErrors] = useState([]);
     const [success, setSuccess] = useState(false);
@@ -21,6 +22,10 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
         model: '',
         no_of_owners: '',
         transmission: '',
+        owner_name: '',
+        owner_phone_number: '',
+        owner_address: '',
+        owner_email: '',
         year: '',
         top_view_image: null,
         left_view_image: null,
@@ -37,6 +42,10 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 cylinders: carDetail.cylinders || '',
                 displacement: carDetail.displacement || '',
                 drive: carDetail.drive || '',
+                owner_name: carDetail?.owner?.name || '',
+                owner_phone_number: carDetail?.owner?.phone_number || '',
+                owner_address: carDetail?.owner?.address || '',
+                owner_email: carDetail.owner?.email || '',
                 fuel_type: carDetail.fuel_type || '',
                 highway_mpg: carDetail.highway_mpg || '',
                 make: carDetail.make || '',
@@ -114,6 +123,10 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 fuel_type: '',
                 highway_mpg: '',
                 make: '',
+                owner_name: '',
+                owner_phone_number: '',
+                owner_address: '',
+                owner_email: '',
                 model: '',
                 transmission: '',
                 year: '',
@@ -398,6 +411,63 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                             onChange={handleChange}
                             className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
                             placeholder="Enter Combination MPG"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="owner_name" className="block text-sm font-medium text-gray-700">
+                            Owner Name
+                        </label>
+                        <input
+                            type="text"
+                            id="owner_name"
+                            name="owner_name"
+                            value={formData.owner_name}
+                            onChange={handleChange}
+                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
+                            placeholder="Enter Owner Name"
+                        />
+                    </div>
+
+                    <div className="mb-4">
+                        <label htmlFor="owner_phone_number" className="block text-sm font-medium text-gray-700">
+                            Owner Phone Number
+                        </label>
+                        <input
+                            type="text"
+                            id="owner_phone_number"
+                            name="owner_phone_number"
+                            value={formData.owner_phone_number}
+                            onChange={handleChange}
+                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
+                            placeholder="Enter Owner Phone Number"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="owner_address" className="block text-sm font-medium text-gray-700">
+                            Owner Address
+                        </label>
+                        <input
+                            type="text"
+                            id="owner_address"
+                            name="owner_address"
+                            value={formData.owner_address}
+                            onChange={handleChange}
+                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
+                            placeholder="Enter Owner Address"
+                        />
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="owner_email" className="block text-sm font-medium text-gray-700">
+                            Owner Email
+                        </label>
+                        <input
+                            type="email"
+                            id="owner_email"
+                            name="owner_email"
+                            value={formData.owner_email}
+                            onChange={handleChange}
+                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
+                            placeholder="Enter Owner Email"
                         />
                     </div>
                 </div>

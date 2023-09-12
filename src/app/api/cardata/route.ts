@@ -2,6 +2,7 @@ import connectDB from "@src/app/lib/mongodb";
 import CarDetail from "@src/app/models/carDetails";
 import mongoose from "mongoose";
 import { NextResponse } from "next/server";
+import Owner from "@src/app/models/owner";
 export async function POST(req) {
     const {
       city_mpg,
@@ -21,11 +22,23 @@ export async function POST(req) {
       left_view_image,
       right_view_image,
       front_view_image,
+      owner_name,
+      owner_phone_number,
+      owner_address,
+      owner_email,
     } = await req.json();
-  
+
+    
     try {
       await connectDB();
+      const owner = await Owner.create({
+        name: owner_name,
+        phone_number: owner_phone_number,
+        address: owner_address,
+        email: owner_email,
+      });
       await CarDetail.create({
+        owner: owner._id,
         city_mpg,
         combination_mpg,
         cylinders,
@@ -65,7 +78,7 @@ export async function POST(req) {
   
   export async function GET(){
     await connectDB();
-    const carData = await CarDetail.find();
+    const carData = await CarDetail?.find()?.populate("owner");
     return NextResponse.json({carData})
   }
   export async function DELETE(req) {
