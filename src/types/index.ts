@@ -31,8 +31,18 @@ export interface CarCardProps {
   highway_mpg: number;
   make: string;
   model: string;
+  createdAt: string;
   transmission: string;
   year: number
+  owner: {
+    _id: string;
+    name: string;
+    phone_number: string;
+    address: string;
+    email: string;
+    createdAt: string;
+    updatedAt: string;
+  };
 }
 export interface FilterProps {
   manufacturer?: string;

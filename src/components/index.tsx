@@ -11,10 +11,12 @@ import LoaderComp from "./Loader";
 import ShowMore from "./ShowMore";
 import ContactForm from "./ContactForm";
 import Card from "./card";
+import FilterSidebar from "./FilterSidebar";
 import RemoveCars from "./RemoveCars";
 export {
     Hero,
     Card,
+    FilterSidebar,
     RemoveCars,
     ContactForm,
     LoaderComp,

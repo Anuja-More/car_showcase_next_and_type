@@ -108,12 +108,13 @@ export const FUEL_OPTIONS = [
   { value: 'Electric', label: 'Electric' },
 ];
 
-export const YEAR_OPTIONS = [
-  { value: 'Under 3 Years', label: 'Under 3 Years' },
-  { value: 'Under 5 Years', label: 'Under 5 Years' },
-  { value: 'Under 7 Years', label: 'Under 7 Years' },
-  { value: '7 Years and Above', label: '7 Years and Above' },
-];
+const YEAR_OPTIONS = [];
+
+for (let year = 2000; year <= 2023; year++) {
+  YEAR_OPTIONS.push({ value: String(year), label: String(year) });
+}
+
+export { YEAR_OPTIONS };
 
 export const OWNERS_OPTIONS = [
   { value: 'First', label: 'First' },
@@ -133,4 +134,75 @@ export const KM_DRIVEN_OPTIONS = [
   { value: '10,000 - 20,000', label: '10,000 - 20,000' },
   { value: '20,000 - 30,000', label: '20,000 - 30,000' },
   { value: '30,000 - 40,000', label: '30,000 - 40,000' },
+];
+export const brandNames = [
+  "Maruti Suzuki",
+  "Hyundai",
+  "Mahindra",
+  "Toyota",
+  "Honda",
+  "Tata",
+  "Ford",
+  "Volkswagen",
+  "Renault",
+  "Chevrolet",
+  "Mercedes-Benz",
+  "Skoda",
+  "BMW",
+  "Audi",
+  "Nissan",
+  "Kia",
+  "Datsun",
+  "MG",
+  "Fiat",
+  "Land Rover",
+  "Bajaj",
+  "Volvo",
+  "Jaguar",
+  "Mitsubishi",
+  "Ashok Leyland",
+  "Mini",
+  "Force Motors",
+  "Porsche",
+  "Isuzu",
+  "Ambassador",
+  "Eicher Polaris",
+  "Mahindra Renault",
+  "Ssangyong",
+  "Lexus",
+  "Ashok",
+  "Other Brands",
+  "Bentley",
+  "Dc",
+  "Premier",
+  "Smart",
+  "Rolls-Royce",
+  "Lamborghini",
+  "Opel",
+  "Aston Martin",
+  "ICML",
+  "Maserati",
+];
+export const locationData = [
+  "India",
+  "Maharashtra",
+  "Tamil Nadu",
+  "Kerala",
+  "Uttar Pradesh",
+  "Delhi",
+  "Karnataka",
+  "Gujarat",
+  "Telangana",
+  "Punjab",
+  "Haryana",
+  "Rajasthan",
+  "Madhya Pradesh",
+  "Andhra Pradesh",
+  "West Bengal",
+  "Assam",
+  "Chandigarh",
+  "Chhattisgarh",
+  "Bihar",
+  "Jammu & Kashmir",
+  "Uttarakhand", // Add more states as needed
 ];

@@ -7,6 +7,7 @@ export async function POST(req) {
     const {
       city_mpg,
       km_driven,
+      resell_price,
       combination_mpg,
       cylinders,
       no_of_owners,
@@ -42,6 +43,7 @@ export async function POST(req) {
         city_mpg,
         combination_mpg,
         cylinders,
+        resell_price,
         km_driven,
         displacement,
         drive,

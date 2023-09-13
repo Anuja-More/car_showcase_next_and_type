@@ -24,7 +24,7 @@ const RemoveCars = ({id}) => {
     }
   return (
     <button onClick={removeCarDetails} className='text-red-300'>
-     Delete
+    <i className="pi pi-trash" style={{ color: 'text-red-300' }}></i>
     </button>
   )
 }

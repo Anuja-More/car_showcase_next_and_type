@@ -5,7 +5,6 @@ import Image from 'next/image';
 import { FUEL_OPTIONS, TRANSMISSION_OPTIONS, OWNERS_OPTIONS, YEAR_OPTIONS, KM_DRIVEN_OPTIONS } from '@src/constants';
 
 const CarForm = ({ toggleFormVisibility, carDetail }) => {
-    console.log(carDetail)
     const router = useRouter()
     // const [errors, setErrors] = useState([]);
     const [success, setSuccess] = useState(false);
@@ -20,6 +19,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
         highway_mpg: '',
         make: '',
         model: '',
+        resell_price:'',
         no_of_owners: '',
         transmission: '',
         owner_name: '',
@@ -42,6 +42,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 cylinders: carDetail.cylinders || '',
                 displacement: carDetail.displacement || '',
                 drive: carDetail.drive || '',
+                resell_price: carDetail.resell_price || '',
                 owner_name: carDetail?.owner?.name || '',
                 owner_phone_number: carDetail?.owner?.phone_number || '',
                 owner_address: carDetail?.owner?.address || '',
@@ -122,6 +123,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 no_of_owners: '',
                 fuel_type: '',
                 highway_mpg: '',
+                resell_price:'',
                 make: '',
                 owner_name: '',
                 owner_phone_number: '',
@@ -248,6 +250,19 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                                 </option>
                             ))}
                         </select>
+                    </div>
+                    <div className="mb-4">
+                        <label htmlFor="resell_price" className="block text-sm font-medium text-gray-700">
+                            Resell Price
+                        </label>
+                        <input
+                            id="resell_price"
+                            name="resell_price"
+                            value={formData.resell_price}
+                            onChange={handleChange}
+                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
+                            placeholder="Enter Resell Price"
+                        />
                     </div>
                     <div className="mb-4">
                         <label htmlFor="km_driven" className="block text-sm font-medium text-gray-700">

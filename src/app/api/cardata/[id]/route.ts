@@ -10,7 +10,7 @@ export async function PUT(req, {params}) {
     try {
       await connectDB();
       const existingCarDetail = await CarDetail.findById(id);
-      console.log(existingCarDetail);
+  
       if (!existingCarDetail) {
         return NextResponse.json({ msg: ["Car detail not found."], success: false });
       }
@@ -41,7 +41,7 @@ export async function PUT(req, {params}) {
   
     try {
       await connectDB();
-      const carData = await CarDetail.findOne({ _id: id }).populate("owner");
+      const carData = await CarDetail.findOne({ _id: id })
       
       if (!carData) {
         return NextResponse.json({ message: "Car detail not found" }, { status: 404 });

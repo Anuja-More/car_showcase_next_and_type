@@ -1,5 +1,6 @@
 import React from 'react';
 import { Card } from '@src/components';
+import {FilterSidebar} from '@src/components';
 import Link from 'next/link';
 
 let apiUrl: string;
@@ -26,10 +27,13 @@ const AddedCars = async () => {
 
   return (
     <div className="container mx-auto py-5 px-10">
-      <h1 className="text-3xl font-semibold mb-4 text-center">PreOwned Cars</h1>
-      <Link href="/add_cars" className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-400 mb-4 inline-block">
+         <h1 className="text-3xl font-semibold mb-4 text-center">PreOwned Cars</h1>
+         <Link href="/add_cars" className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-400 mb-4 inline-block">
           Sell a Car
       </Link>
+      <div className="flex flex-col lg:flex-row xl:flex-row">
+      <FilterSidebar/>
+      <div className="w-3/4">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {carData && carData.length > 0 ? (
           carData.map((car, index) => (
@@ -38,6 +42,8 @@ const AddedCars = async () => {
         ) : (
           <p className="text-center text-gray-600">No cars available.</p>
         )}
+      </div>
+      </div>
       </div>
     </div>
   );

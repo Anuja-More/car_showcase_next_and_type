@@ -24,6 +24,6 @@ const OwnerSchema = new Schema(
   }
 );
 
-const Owner = mongoose.model.owner || mongoose.model("Owner", OwnerSchema);
+const Owner = mongoose?.model?.Owner || mongoose.model("Owner", OwnerSchema);
 
 export default Owner;

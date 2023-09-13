@@ -2,6 +2,9 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Navbar } from '@src/components'
 import {Footer} from '@src/components'
+import "primereact/resources/themes/saga-blue/theme.css";
+import "primereact/resources/primereact.min.css";
+import "primeicons/primeicons.css";
 
 
 export const metadata: Metadata = {

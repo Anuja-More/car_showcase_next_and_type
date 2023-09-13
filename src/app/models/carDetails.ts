@@ -7,6 +7,10 @@ const CarDetailSchema = new Schema(
         ref: "Owner",
         required: true,
       },
+      resell_price:{
+        type: String,
+        required: true, 
+      },
     city_mpg: {
       type: Number,
       required: true,
