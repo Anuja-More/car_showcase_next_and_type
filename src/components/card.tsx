@@ -26,10 +26,13 @@ const Card = ({ carData }: carProps) => {
         />
       </div>
       <h2 className="text-xl font-semibold mt-2">
-        {carData.make} {carData.model}
+        {carData?.make} {carData?.model}
       </h2>
-      <p className="text-gray-600"><i className="pi pi-users text-blue-300 mx-2"></i> {carData.no_of_owners} owner</p>
-      <p className="text-gray-600"><i className="pi pi-bolt text-yellow-500 mx-2"></i> {carData.km_driven} km</p>
+      <h3 className="font-semibold m-2">
+       $ {carData?.resell_price}
+      </h3>
+      <p className="text-gray-600"><i className="pi pi-users text-blue-300 mx-2"></i> {carData?.no_of_owners} owner</p>
+      <p className="text-gray-600"><i className="pi pi-bolt text-yellow-500 mx-2"></i> {carData?.km_driven} km</p>
       <p className="text-gray-600"><i className="pi pi-globe text-green-500 mx-2"></i>{" "}{carData?.owner?.address}</p>
       <p className="text-gray-600"><i className="pi pi-phone text-red-400 mx-2"></i>{carData?.owner?.phone_number}</p>
       <p className="text-gray-600"><i className="pi pi-calendar-plus text-purple-300 mx-2"></i>
