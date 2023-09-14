@@ -1,30 +1,30 @@
 // Location.tsx
 import React from 'react';
-import { locationData } from '@src/constants';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 
-type LocationProps = {
-  selectedLocation: string | null;
-  onLocationClick: (location: string) => void;
-};
+type YearsProps = {
+    selectedYear: number | null;
+    onYearClick: (year: number) => void;
+  };
+const yearsData = Array.from({ length: 24 }, (_, index) => 2000 + index);
 
-const Location: React.FC<LocationProps> = ({ selectedLocation, onLocationClick }) => {
+const Year: React.FC<YearsProps> = ({ selectedYear, onYearClick }) => {
   return (
     <div>
       <Accordion>
         {/* LOCATION */}
-        <AccordionTab header="LOCATION">
+        <AccordionTab header="YEAR">
           <div className="max-h-40 overflow-y-auto">
             <ul className="pl-4">
-              {locationData.map((state, index) => (
+              {yearsData.map((year, index) => (
                 <li
                   key={index}
-                  onClick={() => onLocationClick(state)}
+                  onClick={() => onYearClick(year)}
                   className={`cursor-pointer ${
-                    selectedLocation === state ? 'bg-blue-400 text-white' : ''
+                    selectedYear === year ? 'bg-blue-400 text-white' : ''
                   }`}
                 >
-                  {state}
+                  {year}
                 </li>
               ))}
             </ul>
@@ -35,4 +35,4 @@ const Location: React.FC<LocationProps> = ({ selectedLocation, onLocationClick }
   );
 };
 
-export default Location;
+export default Year;

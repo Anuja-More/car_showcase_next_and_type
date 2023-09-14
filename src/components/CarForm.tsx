@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import { FUEL_OPTIONS, TRANSMISSION_OPTIONS, OWNERS_OPTIONS, YEAR_OPTIONS, KM_DRIVEN_OPTIONS } from '@src/constants';
+import { FUEL_OPTIONS, TRANSMISSION_OPTIONS, OWNERS_OPTIONS, YEAR_OPTIONS, KM_DRIVEN_OPTIONS, locationData } from '@src/constants';
 
 const CarForm = ({ toggleFormVisibility, carDetail }) => {
     const router = useRouter()
@@ -19,7 +19,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
         highway_mpg: '',
         make: '',
         model: '',
-        resell_price:'',
+        resell_price: '',
         no_of_owners: '',
         transmission: '',
         owner_name: '',
@@ -123,7 +123,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 no_of_owners: '',
                 fuel_type: '',
                 highway_mpg: '',
-                resell_price:'',
+                resell_price: '',
                 make: '',
                 owner_name: '',
                 owner_phone_number: '',
@@ -461,15 +461,20 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                         <label htmlFor="owner_address" className="block text-sm font-medium text-gray-700">
                             Owner Address
                         </label>
-                        <input
-                            type="text"
+                        <select
                             id="owner_address"
                             name="owner_address"
                             value={formData.owner_address}
                             onChange={handleChange}
                             className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
-                            placeholder="Enter Owner Address"
-                        />
+                        >
+                            <option value="">Select State</option>
+                            {locationData.map((state, index) => (
+                                <option key={index} value={state}>
+                                    {state}
+                                </option>
+                            ))}
+                        </select>
                     </div>
                     <div className="mb-4">
                         <label htmlFor="owner_email" className="block text-sm font-medium text-gray-700">

@@ -74,3 +74,11 @@ export const calculateCarRent = (city_mpg: number, year: number) => {
   
     return newPathname;
   };
+  export const formatAsIndianRupees = (amount) => {
+    const formatter = new Intl.NumberFormat('en-IN', {
+      style: 'currency',
+      currency: 'INR',
+    });
+  
+    return formatter.format(amount);
+  };

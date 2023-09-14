@@ -2,15 +2,16 @@ import React, { useState } from 'react';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 
 type FuelType = string;
-
-const Fuel: React.FC = () => {
-  const [selectedFuels, setSelectedFuels] = useState<FuelType[]>([]);
-
+interface FuelProps {
+  selectedFuels: FuelType[];
+  onFuelChange: (selected: FuelType[]) => void;
+}
+const Fuel: React.FC<FuelProps> = ({ selectedFuels, onFuelChange }) => {
   const handleFuelChange = (fuel: FuelType) => {
     if (selectedFuels.includes(fuel)) {
-      setSelectedFuels(selectedFuels.filter((selectedFuel) => selectedFuel !== fuel));
+      onFuelChange(selectedFuels.filter((selectedFuel) => selectedFuel !== fuel));
     } else {
-      setSelectedFuels([...selectedFuels, fuel]);
+      onFuelChange([...selectedFuels, fuel]);
     }
   };
 

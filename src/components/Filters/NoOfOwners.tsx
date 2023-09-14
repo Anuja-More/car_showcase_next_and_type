@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import { Accordion, AccordionTab } from 'primereact/accordion';
 
-// Create a custom type for the selected number of owners
 type OwnerType = string;
-
-const NoOfOwners: React.FC = () => {
-  const [selectedOwners, setSelectedOwners] = useState<OwnerType[]>([]);
+interface NoOfOwnersProps {
+  selectedOwners: OwnerType[];
+  onOwnerChange: (selected: OwnerType[]) => void;
+}
+const NoOfOwners: React.FC<NoOfOwnersProps> = ({ selectedOwners, onOwnerChange }) => {
 
   const handleOwnerChange = (owner: OwnerType) => {
     if (selectedOwners.includes(owner)) {
-      setSelectedOwners(selectedOwners.filter((selectedOwner) => selectedOwner !== owner));
+      onOwnerChange(selectedOwners.filter((selectedOwner) => selectedOwner !== owner));
     } else {
-      setSelectedOwners([...selectedOwners, owner]);
+      onOwnerChange([...selectedOwners, owner]);
     }
   };
 
