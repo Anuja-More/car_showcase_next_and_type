@@ -1,5 +1,4 @@
 "use client";
-import React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CustomButton from './CustomButton';
@@ -54,20 +53,20 @@ const FilterSidebar = () => {
         const brandsQuery = selectedBrands.map(brand => `brands=${encodeURIComponent(brand.toLowerCase())}`).join('&');
         const locationQuery = selectedLocation ? `location=${encodeURIComponent(selectedLocation.toLowerCase())}` : '';
         const yearQuery = selectedYear ? `year=${encodeURIComponent(selectedYear)}` : '';
-      
+
         // Combine all filter queries
         const filterQuery = [
-          ownersQuery,
-          fuelsQuery,
-          yearQuery,
-          transmissionQuery,
-          brandsQuery,
-          locationQuery
+            ownersQuery,
+            fuelsQuery,
+            yearQuery,
+            transmissionQuery,
+            brandsQuery,
+            locationQuery
         ].filter(query => query !== '').join('&');
-      
+
         return filterQuery;
-      };
-      
+    };
+
 
     const handleSave = () => {
         const filterQuery = generateQuery();
@@ -90,7 +89,7 @@ const FilterSidebar = () => {
                 selectedLocation={selectedLocation}
                 onLocationClick={handleLocationClick}
             />
-           
+
             <Year selectedYear={selectedYear}
                 onYearClick={handleYearClick} />
             <Brand selectedBrands={selectedBrands} onBrandCheckboxChange={handleBrandCheckboxChange} />
@@ -98,15 +97,22 @@ const FilterSidebar = () => {
             <Fuel selectedFuels={selectedFuels} onFuelChange={handleFuelChange} />
             <Transmission selectedTransmission={selectedTransmission} onTransmissionChange={handleTransmissionChange} />
             <div className="mt-4">
-                <div className='flex justify-between'>
-                <CustomButton title='Apply'
-                    containerStyles='m-4 py-[16px] rounded-full bg-blue-500 hover:bg-blue-600'
-                    textStyles='text-white text-[14px] leading-[17px] font-bold' handleClick={handleSave} />
-             <CustomButton title='Clear All'
-                    containerStyles='m-4 py-[16px] rounded-full bg-red-500 hover:bg-red-600'
-                    textStyles='text-white text-[14px] leading-[17px] font-bold' handleClick={handleClearAll} />
+                <div className="flex justify-between">
+                    <CustomButton
+                        title="Apply"
+                        containerStyles="m-4 py-[16px] rounded-full bg-blue-500 hover:bg-blue-700"
+                        textStyles="text-white text-[14px] leading-[17px] font-bold"
+                        handleClick={handleSave}
+                    />
+                    <CustomButton
+                        title="Clear All"
+                        containerStyles="m-4 py-[16px] rounded-full bg-red-500 hover:bg-red-700"
+                        textStyles="text-white text-[14px] leading-[17px] font-bold"
+                        handleClick={handleClearAll}
+                    />
                 </div>
             </div>
+
         </div>
     );
 };

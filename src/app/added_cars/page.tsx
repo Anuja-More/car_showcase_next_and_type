@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card } from '@src/components';
 import { FilterSidebar } from '@src/components';
 import Link from 'next/link';
@@ -38,11 +37,8 @@ const AddedCars = async ({ searchParams }) => {
     const carTransmission = car?.transmission?.toLowerCase();
     const carOwners = car?.no_of_owners?.toLowerCase();
     const carResell_price = car?.resell_price?.toLowerCase();
-    // const carKmDriven = car?.km_driven?.toLowerCase();
     const carMake = car?.make?.toLowerCase();
     const carLocation = car?.owner?.address?.toLowerCase();
-
-    // Check each condition individually, if it exists in searchParams
     if (transmission && carTransmission !== transmission) return false;
     if (owners && carOwners !== owners) return false;
     if (fuels && carFuelType !== fuels) return false;

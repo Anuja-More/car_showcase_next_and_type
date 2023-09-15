@@ -31,14 +31,17 @@ const Card = ({ carData }: carProps) => {
         {carData?.make}{" "}{carData?.model}
       </h2>
       <h3 className="font-semibold m-2">
-      {formatAsIndianRupees(carData?.resell_price)}
+        {formatAsIndianRupees(carData?.resell_price)}
       </h3>
       <p className="text-gray-600"><i className="pi pi-users text-blue-300 mx-2"></i> {carData?.no_of_owners} owner</p>
       <p className="text-gray-600"><i className="pi pi-bolt text-yellow-500 mx-2"></i> {carData?.km_driven} km</p>
       <p className="text-gray-600"><i className="pi pi-globe text-green-500 mx-2"></i>{" "}{carData?.owner?.address}</p>
       <p className="text-gray-600"><i className="pi pi-phone text-red-400 mx-2"></i>{carData?.owner?.phone_number}</p>
-      <p className="text-gray-600"><i className="pi pi-calendar-plus text-purple-300 mx-2"></i>
-        {carData?.createdAt ? new Date(carData.createdAt).toLocaleDateString() : ''}
+      <p className="text-gray-600">
+        <i className="pi pi-calendar-plus text-purple-300 mx-2"></i>
+        {carData?.createdAt
+          ? new Date(carData.createdAt).toLocaleDateString('en-US')
+          : ''}
       </p>
       <div className='relative flex w-full mt-2'>
         <div className='flex group-hover:invisible w-full justify-between text-gray'>
@@ -70,7 +73,9 @@ const Card = ({ carData }: carProps) => {
       <div className="flex justify-between mt-4">
         <Link href={`/edit_cars/${carData._id}`} className="text-blue-500 hover:underline">
           <i className="pi pi-user-edit" style={{ color: 'var(--primary-color)' }}></i>
+          <span className="sr-only">Edit Car</span>
         </Link>
+
         <RemoveCars id={carData._id} />
       </div>
       <div className="flex justify-center">

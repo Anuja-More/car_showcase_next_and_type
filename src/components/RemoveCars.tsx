@@ -23,7 +23,7 @@ const RemoveCars = ({id}) => {
         }
     }
   return (
-    <button onClick={removeCarDetails} className='text-red-300'>
+    <button type="button" onClick={removeCarDetails} className='text-red-300' aria-label="Delete Car">
     <i className="pi pi-trash" style={{ color: 'text-red-300' }}></i>
     </button>
   )
