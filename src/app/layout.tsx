@@ -8,10 +8,22 @@ import "primeicons/primeicons.css";
 
 
 export const metadata: Metadata = {
-  title: 'Go Cars - Best Cars, Reviews, and More',
-  description: 'Discover the best cars in the world and stay updated with the latest automotive news, reviews, and buying guides.',
-  keywords: ['cars', 'best cars', 'automotive', 'car reviews', 'buying guides', 'automobiles', 'top cars', 'auto news', 'rent cars']
+  title:{
+    default:'DoDo Cars',
+    template : '%s | DoDo Cars'
+  },
+  description: 'Explore the finest selection of pre-owned and new cars, get expert reviews, and easily connect with sellers. Stay updated with the latest automotive news and buying guides.',
+  keywords: ['pre-owned cars', 'buy used cars', 'car reviews', 'automotive news', 'car buying guides', 'resell cars', 'car marketplace', 'used automobiles', 'auto enthusiasts'],
+  robots:{
+    googleBot:{
+      index: true,
+    }
+  },
+  manifest: '/manifest.json',
+  icons: {apple:'/logo.svg'},
+  themeColor:'#fff',
 }
+
 
 export default function RootLayout({
   children,

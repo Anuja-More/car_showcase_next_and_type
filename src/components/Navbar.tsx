@@ -18,15 +18,16 @@ const Navbar = () => {
       <div className="mt-5">
       <Link href="./" className="flex justify-center items-center">
     <Image src="\logo.svg"
-     alt="Car Hub logo"
+     alt="DoDo cars logo"
       width={118}
        height={18}
         className="object-contain"/>
+         <h1 className="text-primary-blue font-extrabold">DoDo Cars</h1>
         </Link>
       </div>
       <div className="flex justify-between">
           <CustomButton 
-         title="PreOwned Cars" 
+         title="Pre Owned Cars" 
          btnType="button"
          containerStyles="text-primary-blue rounded-full bg-white min-w-[130px]"
          handleClick={handleNavtoPreOwnedCars} />

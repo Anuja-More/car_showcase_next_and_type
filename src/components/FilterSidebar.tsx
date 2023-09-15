@@ -2,6 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import CustomButton from './CustomButton';
 import NoOfOwners from './Filters/NoOfOwners';
 import Fuel from './Filters/Fuel';
 import Location from './Filters/Location';
@@ -97,18 +98,14 @@ const FilterSidebar = () => {
             <Fuel selectedFuels={selectedFuels} onFuelChange={handleFuelChange} />
             <Transmission selectedTransmission={selectedTransmission} onTransmissionChange={handleTransmissionChange} />
             <div className="mt-4">
-                <button
-                    className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded mr-2"
-                    onClick={handleSave}
-                >
-                    Save
-                </button>
-                <button
-                    className="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
-                    onClick={handleClearAll}
-                >
-                    Clear All
-                </button>
+                <div className='flex justify-between'>
+                <CustomButton title='Apply'
+                    containerStyles='m-4 py-[16px] rounded-full bg-blue-500 hover:bg-blue-600'
+                    textStyles='text-white text-[14px] leading-[17px] font-bold' handleClick={handleSave} />
+             <CustomButton title='Clear All'
+                    containerStyles='m-4 py-[16px] rounded-full bg-red-500 hover:bg-red-600'
+                    textStyles='text-white text-[14px] leading-[17px] font-bold' handleClick={handleClearAll} />
+                </div>
             </div>
         </div>
     );
