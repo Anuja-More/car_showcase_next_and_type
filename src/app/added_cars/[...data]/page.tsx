@@ -10,10 +10,8 @@ import { CustomButton } from '@src/components';
 
 
 const PreOwnedDetailspage = ({ params }: { params: { data: string[] } }) => {
-    console.log(params);
     const router = useRouter();
     const [carInfo, setCarInfo] = useState<CarCardProps[]>([]);
-    console.log(carInfo);
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
         const fetchData = async () => {

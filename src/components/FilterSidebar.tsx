@@ -31,11 +31,9 @@ const FilterSidebar = () => {
     };
     const handleLocationClick = (location: string) => {
         setSelectedLocation(location);
-        console.log(`Clicked Location: ${location}`);
     };
     const handleYearClick = (year: number) => {
         setSelectedYear(year);
-        console.log(`Clicked year: ${year}`);
     };
     const handleOwnerChange = (selected: string[]) => {
         setSelectedOwners(selected);

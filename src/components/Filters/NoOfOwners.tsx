@@ -20,7 +20,7 @@ const NoOfOwners: React.FC<NoOfOwnersProps> = ({ selectedOwners, onOwnerChange }
     <div>
       <Accordion>
         {/* No Of Owners */}
-        <AccordionTab header="No Of Owners">
+        <AccordionTab header="NO OF OWNERS">
           <div>
             <span className="font-semibold">Choose from options below:</span>
             <ul className="pl-4 my-3">
@@ -66,15 +66,6 @@ const NoOfOwners: React.FC<NoOfOwnersProps> = ({ selectedOwners, onOwnerChange }
               </li>
             </ul>
           </div>
-          <button
-            className="px-4 py-2 bg-primary-blue text-white rounded-md hover:bg-primary-blue-dark focus:outline-none focus:ring focus:ring-primary-blue-dark"
-            onClick={() => {
-              // Apply the selected number of owners
-              console.log('Selected Owners:', selectedOwners);
-            }}
-          >
-            Apply
-          </button>
         </AccordionTab>
       </Accordion>
     </div>

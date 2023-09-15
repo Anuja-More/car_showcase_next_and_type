@@ -1,20 +1,19 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/navigation';
+import { Toast } from 'primereact/toast';
 import Image from 'next/image';
 import { FUEL_OPTIONS, TRANSMISSION_OPTIONS, OWNERS_OPTIONS, YEAR_OPTIONS, KM_DRIVEN_OPTIONS, locationData } from '@src/constants';
 
 const CarForm = ({ toggleFormVisibility, carDetail }) => {
     const router = useRouter()
-    // const [errors, setErrors] = useState([]);
+    const toast = useRef<any>(null);
+    const [errors, setErrors] = useState([]);
     const [success, setSuccess] = useState(false);
     const [formData, setFormData] = useState({
         city_mpg: '',
         combination_mpg: '',
-        cylinders: '',
-        displacement: '',
         km_driven: '',
-        drive: '',
         fuel_type: '',
         highway_mpg: '',
         make: '',
@@ -39,9 +38,6 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 city_mpg: carDetail.city_mpg || '',
                 km_driven: carDetail.km_driven || '',
                 combination_mpg: carDetail.combination_mpg || '',
-                cylinders: carDetail.cylinders || '',
-                displacement: carDetail.displacement || '',
-                drive: carDetail.drive || '',
                 resell_price: carDetail.resell_price || '',
                 owner_name: carDetail?.owner?.name || '',
                 owner_phone_number: carDetail?.owner?.phone_number || '',
@@ -75,7 +71,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     });
                 }
             };
-            reader.readAsDataURL(file);
+            reader?.readAsDataURL(file);
         } else {
             setFormData({
                 ...formData,
@@ -109,17 +105,14 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
             body: JSON.stringify(formData),
         });
         const { msg, success } = await res?.json();
-        // setErrors(msg);
+        setErrors(msg);
         setSuccess(success);
 
         if (success) {
             setFormData({
                 city_mpg: '',
                 combination_mpg: '',
-                cylinders: '',
                 km_driven: '',
-                displacement: '',
-                drive: '',
                 no_of_owners: '',
                 fuel_type: '',
                 highway_mpg: '',
@@ -137,13 +130,17 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 right_view_image: null,
                 front_view_image: null,
             });
+            toast.current?.show({ severity: 'success', summary: 'Success', detail: 'Car data submitted successfully' });
             router.push("/added_cars");
-        }
+        }else {
+            toast.current?.show({ severity: 'error', summary: 'Validation Error', detail: 'Please correct the form errors.' });
+          }
     };
 
 
     return (
         <div className="max-w-6xl mx-auto mt-8 p-4 border rounded-lg shadow-lg relative">
+              <Toast ref={toast} />
             <button className="absolute top-2 right-2 z-10 w-fit p-2 
          bg-primary-blue-100
          rounded-full" type="button" onClick={toggleFormVisibility}>
@@ -154,7 +151,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 <div className="grid grid-cols-2 gap-4">
                     <div className="mb-4">
                         <label htmlFor="top_view_image" className="block text-sm font-medium text-gray-700">
-                            Top View Image
+                            Top View Image<span className="text-red-500">*</span>
                         </label>
                         <input
                             id="top_view_image"
@@ -167,7 +164,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="left_view_image" className="block text-sm font-medium text-gray-700">
-                            Left View Image
+                            Left View Image<span className="text-red-500">*</span>
                         </label>
                         <input
                             id="left_view_image"
@@ -180,7 +177,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="front_view_image" className="block text-sm font-medium text-gray-700">
-                            Front View Image
+                            Front View Image<span className="text-red-500">*</span>
                         </label>
                         <input
                             id="front_view_image"
@@ -193,7 +190,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="right_view_image" className="block text-sm font-medium text-gray-700">
-                            Right View Image
+                            Right View Image<span className="text-red-500">*</span>
                         </label>
                         <input
                             id="right_view_image"
@@ -206,7 +203,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="make" className="block text-sm font-medium text-gray-700">
-                            Make
+                            Make<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -221,7 +218,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
 
                     <div className="mb-4">
                         <label htmlFor="model" className="block text-sm font-medium text-gray-700">
-                            Model
+                            Model<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -235,7 +232,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="no_of_owners" className="block text-sm font-medium text-gray-700">
-                            No. of Owners
+                            No. of Owners<span className="text-red-500">*</span>
                         </label>
                         <select
                             id="no_of_owners"
@@ -253,7 +250,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="resell_price" className="block text-sm font-medium text-gray-700">
-                            Resell Price
+                            Resell Price<span className="text-red-500">*</span>
                         </label>
                         <input
                             id="resell_price"
@@ -266,7 +263,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="km_driven" className="block text-sm font-medium text-gray-700">
-                            Kilometers Driven
+                            Kilometers Driven<span className="text-red-500">*</span>
                         </label>
                         <select
                             id="km_driven"
@@ -284,7 +281,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="year" className="block text-sm font-medium text-gray-700">
-                            Year
+                            Year<span className="text-red-500">*</span>
                         </label>
                         <select
                             id="year"
@@ -300,55 +297,9 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                             ))}
                         </select>
                     </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="cylinders" className="block text-sm font-medium text-gray-700">
-                            Cylinders
-                        </label>
-                        <input
-                            type="text"
-                            id="cylinders"
-                            name="cylinders"
-                            value={formData.cylinders}
-                            onChange={handleChange}
-                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
-                            placeholder="Enter Cylinders"
-                        />
-                    </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="displacement" className="block text-sm font-medium text-gray-700">
-                            Displacement
-                        </label>
-                        <input
-                            type="text"
-                            id="displacement"
-                            name="displacement"
-                            value={formData.displacement}
-                            onChange={handleChange}
-                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
-                            placeholder="Enter Displacement"
-                        />
-                    </div>
-
-                    <div className="mb-4">
-                        <label htmlFor="drive" className="block text-sm font-medium text-gray-700">
-                            Drive
-                        </label>
-                        <input
-                            type="text"
-                            id="drive"
-                            name="drive"
-                            value={formData.drive}
-                            onChange={handleChange}
-                            className="mt-1 p-2 w-full border rounded-md focus:ring focus:ring-blue-400"
-                            placeholder="Enter Drive"
-                        />
-                    </div>
-
                     <div className="mb-4">
                         <label htmlFor="fuel_type" className="block text-sm font-medium text-gray-700">
-                            Fuel Type
+                            Fuel Type<span className="text-red-500">*</span>
                         </label>
                         <select
                             id="fuel_type"
@@ -367,7 +318,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
 
                     <div className="mb-4">
                         <label htmlFor="transmission" className="block text-sm font-medium text-gray-700">
-                            Transmission
+                            Transmission<span className="text-red-500">*</span>
                         </label>
                         <select
                             id="transmission"
@@ -386,7 +337,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
 
                     <div className="mb-4">
                         <label htmlFor="city_mpg" className="block text-sm font-medium text-gray-700">
-                            City MPG
+                            City MPG<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -401,7 +352,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
 
                     <div className="mb-4">
                         <label htmlFor="highway_mpg" className="block text-sm font-medium text-gray-700">
-                            Highway MPG
+                            Highway MPG<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -416,7 +367,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
 
                     <div className="mb-4">
                         <label htmlFor="combination_mpg" className="block text-sm font-medium text-gray-700">
-                            Combination MPG
+                            Combination MPG<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -430,7 +381,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="owner_name" className="block text-sm font-medium text-gray-700">
-                            Owner Name
+                            Owner Name<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -445,7 +396,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
 
                     <div className="mb-4">
                         <label htmlFor="owner_phone_number" className="block text-sm font-medium text-gray-700">
-                            Owner Phone Number
+                            Owner Phone Number<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="text"
@@ -459,7 +410,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="owner_address" className="block text-sm font-medium text-gray-700">
-                            Owner Address
+                            Owner Address<span className="text-red-500">*</span>
                         </label>
                         <select
                             id="owner_address"
@@ -478,7 +429,7 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                     </div>
                     <div className="mb-4">
                         <label htmlFor="owner_email" className="block text-sm font-medium text-gray-700">
-                            Owner Email
+                            Owner Email<span className="text-red-500">*</span>
                         </label>
                         <input
                             type="email"
@@ -508,6 +459,15 @@ const CarForm = ({ toggleFormVisibility, carDetail }) => {
                 </div>
             </form>
             {success && <p className="text-green-500">Car data submitted successfully.</p>}
+            {errors.length > 0 && !success && (
+                <div className="text-red-500">
+                    <ul>
+                        {errors.map((error, index) => (
+                            <li key={index}>{error}</li>
+                        ))}
+                    </ul>
+                </div>
+            )}
         </div>
     );
 };

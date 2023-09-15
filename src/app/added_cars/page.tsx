@@ -24,8 +24,6 @@ const getCars = async () => {
 
 const AddedCars = async ({ searchParams }) => {
   const {transmission,owners,fuels,kmdriven,budget,brands,location, year} = searchParams
-  console.log(transmission,owners,fuels,kmdriven,budget,brands,location, year);
-  
   const { carData } = await getCars();
 
   const filteredCars = carData.filter((car) => {
@@ -60,7 +58,7 @@ const AddedCars = async ({ searchParams }) => {
       <div className="flex flex-col lg:flex-row xl:flex-row">
       <FilterSidebar/>
       {searchParams && filteredCars && (
-         <div className="w-3/4">
+         <div className="w-full lg:w-3/4">
          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
            {filteredCars && filteredCars.length > 0 ? (
              filteredCars.map((car, index) => (
@@ -72,8 +70,8 @@ const AddedCars = async ({ searchParams }) => {
          </div>
          </div>
       )}
-        {!searchParams && (<div className="w-3/4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        {!searchParams && (<div className="w-full lg:w-3/4 xl:w-3/4 p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 gap-4">
         {carData && carData.length > 0 ? (
           carData.map((car, index) => (
             <Card key={index} carData={car} />

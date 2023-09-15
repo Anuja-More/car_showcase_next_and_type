@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+
 import { Accordion, AccordionTab } from 'primereact/accordion';
 type TransmissionProps = {
   selectedTransmission: string | null;
@@ -7,7 +7,6 @@ type TransmissionProps = {
 const Transmission: React.FC<TransmissionProps> = ({ selectedTransmission, onTransmissionChange }) => {
   const handleItemClick = (item: string) => {
     onTransmissionChange(item);
-    console.log(`Clicked: ${item}`);
   };
 
   return (

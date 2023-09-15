@@ -41,14 +41,6 @@ const Budget: React.FC = () => {
                                 <span>9,50,000</span>
                             </div>
                         </div>
-                        <button
-                            className="px-4 py-2 bg-primary-blue text-white rounded-md hover:bg-primary-blue-dark focus:outline-none focus:ring focus:ring-primary-blue-dark"
-                            onClick={() => {
-                                console.log('Selected Budget:', selectedBudget);
-                            }}
-                        >
-                            Apply
-                        </button>
                     </div>
                 </AccordionTab>
             </Accordion>

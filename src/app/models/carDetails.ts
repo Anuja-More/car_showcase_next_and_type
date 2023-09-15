@@ -27,18 +27,6 @@ const CarDetailSchema = new Schema(
       type: Number,
       required: true,
     },
-    cylinders: {
-      type: Number,
-      required: true,
-    },
-    displacement: {
-      type: Number,
-      required: true,
-    },
-    drive: {
-      type: String,
-      required: true,
-    },
     fuel_type: {
       type: String,
       required: true,
